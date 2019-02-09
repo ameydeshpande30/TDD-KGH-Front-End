@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-navbar',
@@ -18,10 +19,16 @@ export class NavbarComponent implements OnInit {
       document.querySelector('.sidebar-offcanvas').classList.remove('active');
     }
   }
-  constructor(config: NgbDropdownConfig) {
+  constructor(config: NgbDropdownConfig, private http:HttpClient) {
     config.placement = 'bottom-right';
   }
+  name = "Richard V.Welsh";
+  getName(){
+    return this.http.get("http://10.10.14.203:8080/api/getName").subscribe(data => {this.name = data["name"];},err => console.log(err));
+    
+  }
   ngOnInit() {
+    this.getName();
   }
 
 }

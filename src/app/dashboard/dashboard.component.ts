@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { getOrCreateContainerRef } from '@angular/core/src/render3/di';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,10 +10,24 @@ import { ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class DashboardComponent implements OnInit {
-
-  constructor() { }
+  orders = 20;
+  inq = 30;
+  rooms = 35;
+  emp = 40;
+  constructor(private http:HttpClient) {
+    
+    
+   }
+   getCount(){
+     return this.http.get("http://10.10.14.203:8080/api/getCount").subscribe(data => {this.orders = data["orders"];this.inq = data["inq"];this.rooms = data["rooms"];this.emp = data["emp"];},err => console.log(err));
+     
+     
+   }
 
   ngOnInit() {
+    
+    this.getCount();
+    
   }
 
 
