@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { getTypeNameForDebugging } from '@angular/core/src/change_detection/differs/iterable_differs';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,8 +10,10 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   public samplePagesCollapsed = true;
   constructor() { }
+ 
 
   ngOnInit() {
+    
   }
 
 }

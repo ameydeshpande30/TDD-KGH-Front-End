@@ -12,8 +12,12 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChartsModule } from 'ng2-charts';
+<<<<<<< HEAD
 import { RoomComponent } from './room/room.component';
 import {DataTableModule} from "angular-6-datatable";
+=======
+import { HttpClientModule } from '@angular/common/http';
+>>>>>>> e234962f7494fcef71473b073e29d14c5911220d
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import {DataTableModule} from "angular-6-datatable";
   ],
   imports: [
     BrowserModule,
+<<<<<<< HEAD
     DataTableModule,
+=======
+    HttpClientModule,
+>>>>>>> e234962f7494fcef71473b073e29d14c5911220d
     ChartsModule,
     RouterModule,
     AppRoutingModule,
