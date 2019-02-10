@@ -1,53 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import { ViewEncapsulation } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { getOrCreateContainerRef } from '@angular/core/src/render3/di';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['../app.component.scss','./dashboard.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  orders = 20;
-  inq = 30;
-  rooms = 35;
-  emp = 40;
-  constructor(private http:HttpClient) {
-    
-    
-   }
-   getCount(){
-     return this.http.get("http://10.10.14.203:8080/api/getCount").subscribe(data => {this.orders = data["orders"];this.inq = data["inq"];this.rooms = data["rooms"];this.emp = data["emp"];},err => console.log(err));
-     
-     
-   }
 
+  constructor() { }
+  
   ngOnInit() {
+
     
-    this.getCount();
-    
+                  
   }
-
-
-  public lineChartData:Array<any> = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Bookings'},
+  
+  
+  public lineChartData1:Array<any> = [
+    // {data: [65, 59, 80, 81, 56, 55, 40], label: 'Bookings'},
     {data: [28, 48, 40, 19, 86, 27, 90], label: 'Inquiries'}
   ];
+  public lineChartData2:Array<any> = [
+    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Bookings'},
+    // {data: [28, 48, 40, 19, 86, 27, 90], label: 'Inquiries'}
+  ];
+  public lineChartData:Array<any> = this.lineChartData2;
   public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChartOptions:any = {
     responsive: true
   };
-  public lineChartColors:Array<any> = [
-    { // grey
-      backgroundColor: 'rgba(6,43,231,0.2)',
-      borderColor: 'rgba(26,56,211,1)',
-      pointBackgroundColor: 'rgba(36,62,193,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
-    },
+  public lineChartColors1:Array<any> = [
+   
     { // dark grey
       backgroundColor: 'rgba(235,21,60,0.2)',
       borderColor: 'rgba(210,28,61,1)',
@@ -55,9 +38,40 @@ export class DashboardComponent implements OnInit {
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(77,83,96,1)'
-    },
+    }
   
   ];
+  public lineChartColors2:Array<any> = [
+    { // grey
+      backgroundColor: 'rgba(6,43,231,0.2)',
+      borderColor: 'rgba(26,56,211,1)',
+      pointBackgroundColor: 'rgba(36,62,193,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    }
+  
+  
+  ];
+  
+  public lineChartColors = this.lineChartColors1;
+  flag = 1;
+  onKeyUp(v){
+   
+    if(v==0){
+     
+      this.lineChartData = this.lineChartData1;
+      
+    
+    }
+    else{
+      
+      this.lineChartData = this.lineChartData2;
+      
+      
+    }
+  }
+ 
   public lineChartLegend:boolean = true;
   public lineChartType:string = 'line';
  

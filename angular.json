@@ -3,21 +3,17 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "star-admin-angular": {
+    "TDD-argon": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {
-        "@schematics/angular:component": {
-          "styleext": "scss"
-        }
-      },
+      "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/star-admin-angular",
+            "outputPath": "dist/TDD-argon",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,9 +23,32 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.css",
+              "src/argon/vendor/nucleo/css/nucleo.css",
+              "src/argon/vendor/@fortawesome/fontawesome-free/css/all.min.css",
+              "src/argon/css/argon.min.css",
+              "src/argon/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css",
+              "src/argon/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css",
+              "src/argon/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css"
+              
             ],
-            "scripts": []
+            "scripts": [
+              "src/argon/vendor/jquery/dist/jquery.min.js",
+              "src/argon/vendor/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "src/argon/vendor/chart.js/dist/Chart.min.js",
+              "src/argon/vendor/chart.js/dist/Chart.extension.js",
+              "src/argon/vendor/datatables.net/js/jquery.dataTables.min.js",
+              "src/argon/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js",
+              "src/argon/vendor/datatables.net-buttons/js/dataTables.buttons.min.js",
+              "src/argon/vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js",
+              "src/argon/vendor/datatables.net-buttons/js/buttons.html5.min.js",
+              "src/argon/vendor/datatables.net-buttons/js/buttons.flash.min.js",
+              "src/argon/vendor/datatables.net-buttons/js/buttons.print.min.js",
+              "src/argon/vendor/datatables.net-select/js/dataTables.select.min.js",
+              "src/argon/vendor/js-cookie/js.cookie.js",
+              "src/argon/js/argon.min.js"
+            ],
+            "es5BrowserSupport": true
           },
           "configurations": {
             "production": {
@@ -47,25 +66,32 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "star-admin-angular:build"
+            "browserTarget": "TDD-argon:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "star-admin-angular:build:production"
+              "browserTarget": "TDD-argon:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "star-admin-angular:build"
+            "browserTarget": "TDD-argon:build"
           }
         },
         "test": {
@@ -76,7 +102,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.scss"
+              "src/styles.css"
             ],
             "scripts": [],
             "assets": [
@@ -99,19 +125,20 @@
         }
       }
     },
-    "star-admin-angular-e2e": {
+    "TDD-argon-e2e": {
       "root": "e2e/",
       "projectType": "application",
+      "prefix": "",
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "star-admin-angular:serve"
+            "devServerTarget": "TDD-argon:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "star-admin-angular:serve:production"
+              "devServerTarget": "TDD-argon:serve:production"
             }
           }
         },
@@ -127,5 +154,5 @@
       }
     }
   },
-  "defaultProject": "star-admin-angular"
+  "defaultProject": "TDD-argon"
 }
