@@ -12,6 +12,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChartsModule } from 'ng2-charts';
+import { RoomComponent } from './room/room.component';
+import {DataTableModule} from "angular-6-datatable";
 
 @NgModule({
   declarations: [
@@ -20,10 +22,12 @@ import { ChartsModule } from 'ng2-charts';
     SidebarComponent,
     FooterComponent,
     DashboardComponent,
+    RoomComponent,
     
   ],
   imports: [
     BrowserModule,
+    DataTableModule,
     ChartsModule,
     RouterModule,
     AppRoutingModule,
