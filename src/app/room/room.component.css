@@ -1,0 +1,8 @@
+tr > td {
+    vertical-align: middle;
+    text-align: center;
+}
+tr > th {
+    vertical-align: middle;
+    text-align: center;
+}
