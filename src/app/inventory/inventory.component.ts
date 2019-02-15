@@ -1,14 +1,13 @@
-import { Component, OnDestroy, OnInit, ViewChild, NO_ERRORS_SCHEMA } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-room',
-  templateUrl: './room.component.html',
-  styleUrls: ['./room.component.css']
+  selector: 'app-inventory',
+  templateUrl: './inventory.component.html',
+  styleUrls: ['./inventory.component.css']
 })
-export class RoomComponent implements OnInit, OnDestroy  {
-  
+export class InventoryComponent implements OnInit {
   public list: Rooms[];
 
   name = "Name"
@@ -83,7 +82,6 @@ export class RoomComponent implements OnInit, OnDestroy  {
   }
 
 }
-
 interface Rooms {
   id: number;
   price: number;

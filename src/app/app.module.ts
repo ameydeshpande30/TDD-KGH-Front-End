@@ -10,6 +10,9 @@ import { ChartsModule } from 'ng2-charts';
 import { RoomComponent } from './room/room.component';
 import { DataTablesModule } from 'angular-datatables';
 import { HttpClientModule } from '@angular/common/http';
+import { CustomerComponent } from './customer/customer.component';
+import { EmpComponent } from './emp/emp.component';
+import { InventoryComponent } from './inventory/inventory.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { HttpClientModule } from '@angular/common/http';
     SidenavComponent,
     NavbarComponent,
     DashboardComponent,
-    RoomComponent
+    RoomComponent,
+    CustomerComponent,
+    EmpComponent,
+    InventoryComponent
   ],
   imports: [
     BrowserModule,
