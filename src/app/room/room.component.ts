@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewChild, NO_ERRORS_SCHEMA } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { GlobalVariable } from '../global';
 
 @Component({
   selector: 'app-room',
@@ -10,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 export class RoomComponent implements OnInit, OnDestroy  {
   
   public list: Rooms[];
-
+  update = 0
   name = "Name"
   id = 0;
   size = 23;
@@ -67,6 +68,21 @@ export class RoomComponent implements OnInit, OnDestroy  {
   openModel() {
   this.name = "Amey";
 
+  }
+  getData(id,name,price,size): void {
+    let data = {
+      "id" : id,
+      "name" : name,
+      "price" : price,
+      "size" : size,
+      "update" : this.update
+    };
+    this.http.post(GlobalVariable.BASE_API_URL + "room/addUpdate", data, ).toPromise()
+           .then(
+            //  this.setList()
+           )
+           .catch();
+    
   }
 
   setData(name, id , price, size){

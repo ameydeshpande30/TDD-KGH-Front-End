@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CustomerComponent } from './customer/customer.component';
 import { EmpComponent } from './emp/emp.component';
 import { InventoryComponent } from './inventory/inventory.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
