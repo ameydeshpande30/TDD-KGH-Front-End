@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { GlobalVariable } from '../global';
 
 @Component({
   selector: 'app-inventory',
@@ -9,13 +10,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class InventoryComponent implements OnInit {
   public list: Rooms[];
-
+  update = 0
   name = "Name"
   id = 0;
   size = 23;
   price = 20;
   normal(){
     this.name = "Name"
+    this.update = 0;
     this.id = this.list.length + 1;
     this.size = 23;
     this.price = 20;
@@ -30,7 +32,7 @@ export class InventoryComponent implements OnInit {
   }
   @ViewChild("asd") ne;
   ngOnInit() {
-    this.http.get("http://localhost:3000/data").subscribe(result => {
+    this.http.get(GlobalVariable.BASE_API_URL + "room/getList").subscribe(result => {
      
       this.dtOptions = {
         pagingType: 'numbers',
@@ -67,21 +69,42 @@ export class InventoryComponent implements OnInit {
   this.name = "Amey";
 
   }
+  getData(id,name,price,size): void {
+    let data = {
+      "id" : id,
+      "name" : name,
+      "price" : price,
+      "size" : size,
+      "update" : this.update
+    };
+    this.http.post(GlobalVariable.BASE_API_URL + "room/addUpdate", data, ).toPromise()
+           .then(
+            //  this.setList()
+            window.location.reload()
+           )
+           .catch();
+    
+  }
 
   setData(name, id , price, size){
     console.log("call");
-    
+    this.update = 1;
     this.name = name;
     this.id = id ;
     this.price = price;
     this.size = size;
   }
   del(id){
-    console.log("delete",id);
+    this.http.get(GlobalVariable.BASE_API_URL + "room/delRoom/" + id).subscribe(result => {
+    console.log(result);
+    if(result){
+      window.location.reload()
+    }
     
   }
-
+  , error => console.error(error));}
 }
+
 interface Rooms {
   id: number;
   price: number;
