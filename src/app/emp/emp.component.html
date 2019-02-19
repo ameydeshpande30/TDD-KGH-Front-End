@@ -2,7 +2,7 @@
   <!-- Card header -->
   <div class="card-header text-center py-2">
   <div class="d-flex justify-content-between align-items-center">
-  <h1> Room Management</h1>
+  <h1> Employee Management</h1>
     <button  class="btn btn-primary" (click) ="normal()" data-toggle="modal" data-target="#exampleModal" type="button">ADD</button>
      
       </div>
@@ -14,8 +14,13 @@
         <tr>
           <th>ID</th>
           <th>Name</th>
-          <th>Size</th>
-          <th>Price</th>
+          <th>CONTACT</th>
+          <th>USERNAME</th>
+          <th>PASSWORD</th>
+          <th>SAL</th>
+          <th>DOJ</th>
+          <th>RID</th>
+          <th>DID</th>
           <th>Update/Delete</th>
         </tr>
       </thead>
@@ -23,8 +28,13 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Size</th>
-            <th>Price</th>
+            <th>CONTACT</th>
+            <th>USERNAME</th>
+            <th>PASSWORD</th>
+            <th>SAL</th>
+            <th>DOJ</th>
+            <th>RID</th>
+            <th>DID</th>
             <th>Update/Delete</th>
         </tr>
       </tfoot>
@@ -32,8 +42,13 @@
           <tr *ngFor="let x of list">
               <td>{{x.id}}</td>
               <td>{{x.name}}</td>
-              <td>{{x.size}}</td>
-              <td>{{x.price}}</td>
+              <td>{{x.contactNumber}}</td>
+              <td>{{x.username}}</td>
+              <td>{{x.password}}</td>
+              <td>{{x.sal}}</td>
+              <td>{{x.doj}}</td>
+              <td>{{x.rid}}</td>
+              <td>{{x.did}}</td>
               <td >
                   <button class="btn btn-icon btn-outline-primary py-1 px-2"  (click)="setData(x.name, x.id, x.price, x.size)"  data-toggle="modal" data-target="#exampleModal" type="button">
                     <i class="fas fa-pencil-alt" aria-hidden="true"></i>
@@ -52,37 +67,65 @@
 <div  class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-        <form action="/room/add" method="POST">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add Room</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Add/Update Employee</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-            <div class="form-group">
-                <label for="example-text-input" class="form-control-label">ID</label>
-                <input disabled  class="form-control" type="text" value="{{id}}" id="example-number-input">
+            <div class="d-flex justify-content-center">
+              <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">ID</label>
+                  <input disabled  class="form-control" type="text" value="{{id}}" id="example-number-input">
+              </div>
             </div>
-            <div class="form-group">
-                <label for="example-text-input" class="form-control-label">Size</label>
-                <input  class="form-control" type="text" value="{{name}}" id="example-number-input">
+            <div class="d-flex justify-content-between">
+              <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Name</label>
+                  <input  class="form-control" type="text" value="{{name}}" id="example-number-input">
+              </div>
+              <div class="form-group">
+                  <label for="example-number-input" class="form-control-label">Contact Number</label>
+                  <input  class="form-control" type="text" value="{{contactNumber}}" id="example-number-input">
+              </div>
             </div>
-            <div class="form-group">
-                <label for="example-number-input" class="form-control-label">Size</label>
-                <input  class="form-control" type="number" value="{{size}}" id="example-number-input">
+            <div class="d-flex justify-content-between">
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">USERNAME</label>
+                    <input  class="form-control" type="text" value="{{username}}" id="example-number-input">
+                </div>
+                <div class="form-group">
+                    <label for="example-number-input" class="form-control-label">PASSWORD</label>
+                    <input  class="form-control" type="text" value="{{password}}" id="example-number-input">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="example-number-input" class="form-control-label">Price</label>
-                <input class="form-control" type="number" value="{{price}}" id="example-number-input">
-               
+            <div class="d-flex justify-content-between">
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Sal</label>
+                    <input  class="form-control" type="number" value="{{sal}}" id="example-number-input">
+                </div>
+                <div class="form-group">
+                    <label for="example-number-input" class="form-control-label">DOJ</label>
+                    <input  class="form-control" type="Date" value="{{size}}" id="example-number-input">
+                </div>
             </div>
+            <div class="d-flex justify-content-between">
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">DID</label>
+                    <input  class="form-control" type="number" value="{{did}}" id="example-number-input">
+                </div>
+                <div class="form-group">
+                    <label for="example-number-input" class="form-control-label">RID</label>
+                    <input  class="form-control" type="number" value="{{RID}}" id="example-number-input">
+                </div>
+            </div>
+          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="submit" class="btn btn-primary" >Save</button>
         </div>
-      </form>
       </div>
     </div>
   </div>

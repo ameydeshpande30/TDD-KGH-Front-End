@@ -23,7 +23,7 @@ export class RoomComponent implements OnInit, OnDestroy  {
     this.size = 23;
     this.price = 20;
   }
-  users$: any[] = [];
+  
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
   http 
@@ -33,6 +33,11 @@ export class RoomComponent implements OnInit, OnDestroy  {
   }
   @ViewChild("asd") ne;
   ngOnInit() {
+    this.dtOptions = {
+      pagingType: 'numbers',
+      pageLength: 10,
+      processing: true
+    };
     this.http.get(GlobalVariable.BASE_API_URL + "room/getList").subscribe(result => {
      
       this.dtOptions = {

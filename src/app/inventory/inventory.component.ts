@@ -9,18 +9,25 @@ import { GlobalVariable } from '../global';
   styleUrls: ['./inventory.component.css']
 })
 export class InventoryComponent implements OnInit {
-  public list: Rooms[];
+  public list: inventory[];
   update = 0
   name = "Name"
   id = 0;
-  size = 23;
-  price = 20;
+  id1 = 0;
+  qty = 2;
+  cp = 20;
+  sp = 30;
+  cid = 10;
+  availability = true;
   normal(){
     this.name = "Name"
     this.update = 0;
     this.id = this.list.length + 1;
-    this.size = 23;
-    this.price = 20;
+    this.qty = 2;
+    this.cp = 20;
+    this.sp = 30;
+    this.cid = 10;
+    this.availability = true;
   }
   users$: any[] = [];
   dtOptions: DataTables.Settings = {};
@@ -28,11 +35,14 @@ export class InventoryComponent implements OnInit {
   http 
   constructor(public http2:HttpClient) {
     // this.list.push(this.rasd);
+    console.log("hello");
+    
    this.http = http2;
   }
   @ViewChild("asd") ne;
   ngOnInit() {
-    this.http.get(GlobalVariable.BASE_API_URL + "room/getList").subscribe(result => {
+    this.http.get(GlobalVariable.BASE_API_URL + "inventory").subscribe(result => {
+     
      
       this.dtOptions = {
         pagingType: 'numbers',
@@ -40,26 +50,30 @@ export class InventoryComponent implements OnInit {
         processing: true
       };
       
-      this.dtTrigger.next();  
-      this.list = result as Rooms[];
+    
+      // this.dtTrigger.next();
+      this.list = result as inventory[];
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+      
       this.id = this.list.length + 1;
-      this.dtTrigger.unsubscribe();
+     
+      // this.dtTrigger.unsubscribe();
+      console.log("done1");
+      
   }, error => console.error(error));
   
-
+  console.log("done2");
    
   this.openModel();
   this.tp();
   }
-  
+
+
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
   tp() {
-     
-     
-    //  this.name_h.value = "text";
-    //  this.name = "Amey2"
+
     this.ne.value = "asd";
     }
 
@@ -69,33 +83,44 @@ export class InventoryComponent implements OnInit {
   this.name = "Amey";
 
   }
-  getData(id,name,price,size): void {
+  getData(id, name, qty, cp, sp, cid, availability): void {
     let data = {
-      "id" : id,
-      "name" : name,
-      "price" : price,
-      "size" : size,
+      "id": id,
+       "name":name, 
+       "qty":qty, 
+       "cp":cp, 
+       "sp":sp, 
+       "cid":cid, 
+       "availability":availability,
       "update" : this.update
     };
-    this.http.post(GlobalVariable.BASE_API_URL + "room/addUpdate", data, ).toPromise()
+    console.log(data);
+    
+    this.http.post(GlobalVariable.BASE_API_URL + "inventory/add", data, ).toPromise()
            .then(
             //  this.setList()
             window.location.reload()
            )
-           .catch();
+           .catch(
+             console.log("err")
+             
+           );
     
   }
 
-  setData(name, id , price, size){
+  setData(id, name, qty, cp, sp, cid, availability){
     console.log("call");
     this.update = 1;
+    this.id = id ; 
     this.name = name;
-    this.id = id ;
-    this.price = price;
-    this.size = size;
+    this.qty = qty;
+    this.cp = cp;
+    this.sp = sp;
+    this.cid = cid;
+    this.availability = availability;
   }
   del(id){
-    this.http.get(GlobalVariable.BASE_API_URL + "room/delRoom/" + id).subscribe(result => {
+    this.http.delete(GlobalVariable.BASE_API_URL + "inventory/del/" + id).subscribe(result => {
     console.log(result);
     if(result){
       window.location.reload()
@@ -105,9 +130,12 @@ export class InventoryComponent implements OnInit {
   , error => console.error(error));}
 }
 
-interface Rooms {
-  id: number;
-  price: number;
-  size: number;
-  name: string;
+interface inventory {
+  id:number;
+  name:string;
+  qty:number;
+  cp:number;
+  sp:number;
+  cid:number;
+  availability:number;
  }

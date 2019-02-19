@@ -33,7 +33,7 @@ export class EmpComponent implements OnInit {
   }
   @ViewChild("asd") ne;
   ngOnInit() {
-    this.http.get(GlobalVariable.BASE_API_URL + "room/getList").subscribe(result => {
+    this.http.get(GlobalVariable.BASE_API_URL + "employee").subscribe(result => {
      
       this.dtOptions = {
         pagingType: 'numbers',
@@ -78,7 +78,7 @@ export class EmpComponent implements OnInit {
       "size" : size,
       "update" : this.update
     };
-    this.http.post(GlobalVariable.BASE_API_URL + "room/addUpdate", data, ).toPromise()
+    this.http.post(GlobalVariable.BASE_API_URL + "employee/add", data, ).toPromise()
            .then(
             //  this.setList()
             window.location.reload()
@@ -96,7 +96,7 @@ export class EmpComponent implements OnInit {
     this.size = size;
   }
   del(id){
-    this.http.get(GlobalVariable.BASE_API_URL + "room/delRoom/" + id).subscribe(result => {
+    this.http.get(GlobalVariable.BASE_API_URL + "employee/del/" + id).subscribe(result => {
     console.log(result);
     if(result){
       window.location.reload()
