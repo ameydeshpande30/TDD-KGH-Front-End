@@ -46,7 +46,8 @@
               "src/argon/vendor/datatables.net-buttons/js/buttons.print.min.js",
               "src/argon/vendor/datatables.net-select/js/dataTables.select.min.js",
               "src/argon/vendor/js-cookie/js.cookie.js",
-              "src/argon/js/argon.min.js"
+              "src/argon/js/argon.min.js",
+              "src/argon/js/demo.js"
             ],
             "es5BrowserSupport": true
           },

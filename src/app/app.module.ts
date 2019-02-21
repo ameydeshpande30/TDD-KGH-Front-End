@@ -14,6 +14,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { EmpComponent } from './emp/emp.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { RouterModule } from '@angular/router';
+import { BilComponent } from './bil/bil.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { RouterModule } from '@angular/router';
     RoomComponent,
     CustomerComponent,
     EmpComponent,
-    InventoryComponent
+    InventoryComponent,
+    BilComponent
   ],
   imports: [
     BrowserModule,
