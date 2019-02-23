@@ -1,3 +1,4 @@
+import { StatementComponent } from './statement/statement.component';
 import { BilComponent } from './bil/bil.component';
 import { EmpComponent } from './emp/emp.component';
 import { InventoryComponent } from './inventory/inventory.component';
@@ -15,7 +16,7 @@ const routes: Routes = [
   { path: 'inventory', component: InventoryComponent },
   { path: 'emp', component: EmpComponent },
   { path: 'bill', component: BilComponent },
-  
+  { path: 'statement', component: StatementComponent },
 ];
 
 @NgModule({
