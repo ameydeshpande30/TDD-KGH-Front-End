@@ -60,13 +60,13 @@ export class StatementComponent implements OnInit {
       //   processing: true,
       //   responsive : true,
       // });
-      setTimeout(function () {
-        $(function () {
-          $('#datatable-basic').DataTable({
-            pagingType: 'numbers',
+      setTimeout(function() {
+        $(function() {
+          $("#datatable-basic").DataTable({
+            pagingType: "numbers",
             pageLength: 10,
             processing: true,
-            responsive : true,
+            responsive: true
           });
         });
       }, 100);
