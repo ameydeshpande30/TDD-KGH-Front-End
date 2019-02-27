@@ -17,6 +17,8 @@ import { RouterModule } from '@angular/router';
 import { BilComponent } from './bil/bil.component';
 import { StatementComponent } from './statement/statement.component';
 import { CategoryComponent } from './category/category.component';
+import { DepartmentComponent } from './department/department.component';
+import { RolesComponent } from './roles/roles.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { CategoryComponent } from './category/category.component';
     InventoryComponent,
     BilComponent,
     StatementComponent,
-    CategoryComponent
+    CategoryComponent,
+    DepartmentComponent,
+    RolesComponent
   ],
   imports: [
     BrowserModule,

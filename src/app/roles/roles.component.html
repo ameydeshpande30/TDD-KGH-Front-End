@@ -2,7 +2,7 @@
   <!-- Card header -->
   <div class="card-header text-center py-2">
   <div class="d-flex justify-content-between align-items-center">
-  <h1> Inventory Management</h1>
+  <h1> Roles Management</h1>
     <button  class="btn btn-primary" (click) ="normal()" data-toggle="modal" data-target="#exampleModal" type="button">ADD</button>
      
       </div>
@@ -14,37 +14,25 @@
         <tr>
           <th>ID</th>
           <th>Name</th>
-          <th>QTY</th>
-          <th>CP</th>
-          <th>SP</th>
-          <th>CID</th>
-          <th>Availability</th>
+          <th>Desc</th>
           <th>Add/Update</th>
         </tr>
       </thead>
       <tfoot>
         <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>QTY</th>
-          <th>CP</th>
-          <th>SP</th>
-          <th>CID</th>
-          <th>Availability</th>
-          <th>Add/Update</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Desc</th>
+            <th>Add/Update</th>
         </tr>
       </tfoot>
       <tbody>
           <tr *ngFor="let x of list">
               <td>{{x.id}}</td>
               <td>{{x.name}}</td>
-              <td>{{x.qty}}</td>
-              <td>{{x.cp}}</td>
-              <td>{{x.sp}}</td>
-              <td>{{x.cid}}</td>
-              <td>{{x.availability}}</td>
+              <td>{{x.desc}}</td>
               <td >
-                  <button class="btn btn-icon btn-outline-primary py-1 px-2"  (click)="setData(x.id, x.name, x.qty, x.cp, x.sp, x.cid, x.availability)"  data-toggle="modal" data-target="#exampleModal" type="button">
+                  <button class="btn btn-icon btn-outline-primary py-1 px-2"  (click)="setData(x.id, x.name, x.desc)"  data-toggle="modal" data-target="#exampleModal" type="button">
                     <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                   </button>
                   <button class="btn btn-icon btn-outline-danger py-1 px-2" type="button">
@@ -78,41 +66,19 @@
             <div class="d-flex justify-content-between">
               <div class="form-group">
                 <label for="example-text-input" class="form-control-label">Name</label>
-                <input #mName class="form-control" type="number" value="{{name}}" id="example-number-input">
+                <input #mName class="form-control" type="text" value="{{name}}" id="example-number-input">
               </div>
               <div class="form-group">
-                <label for="example-text-input" class="form-control-label">QTY</label>
-                <input #mQty class="form-control" type="number" value="{{qty}}" id="example-number-input">
+                <label for="example-text-input" class="form-control-label">Desc</label>
+                <input #mDesc class="form-control" type="text" value="{{desc}}" id="example-number-input">
               </div>
             </div>
-            <div class="d-flex justify-content-between">
-              <div class="form-group">
-                <label for="example-text-input" class="form-control-label">CP</label>
-                <input #mCp class="form-control" type="number" value="{{cp}}" id="example-number-input">
-              </div>
-              <div class="form-group">
-                <label for="example-text-input" class="form-control-label">SP</label>
-                <input #mSp  class="form-control" type="number" value="{{sp}}" id="example-number-input">
-              </div>
-            </div>
-            <div class="d-flex justify-content-between">
-              <div class="form-group">
-                  <label for="example-text-input" class="form-control-label">CID</label>
-                <select #mDrop class="custom-select" id="inputGroupSelect01">
-                  <option selected>Choose...</option>
-                  <option *ngFor="let x of clist" value="{{x.id}}">{{x.name}}</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="example-text-input" class="form-control-label">Availability</label>
-                <input #mAvailability  class="form-control" type="text" value="{{availability}}" id="example-number-input">
-              </div>
-            </div>
+            
           
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" (click)="getData(mID.value, mName.value, mQty.value, mCp.value, mSp.value, mDrop.value, mAvailability.value)">Save</button>
+          <button type="submit" class="btn btn-primary" (click)="getData(mID.value, mName.value, mDesc.value)">Save</button>
         </div>
       
       </div>

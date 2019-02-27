@@ -43,7 +43,7 @@ export class CategoryComponent implements OnInit {
             responsive: true
           });
         });
-      }, 100);
+      }, 300);
       
   }, error => console.error(error));
   }

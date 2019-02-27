@@ -7,8 +7,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RoomComponent } from './room/room.component';
-import { bindCallback } from 'rxjs';
 import { CategoryComponent } from './category/category.component';
+import { DepartmentComponent } from './department/department.component';
+import { RolesComponent } from './roles/roles.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -19,6 +20,8 @@ const routes: Routes = [
   { path: 'bill', component: BilComponent },
   { path: 'statement', component: StatementComponent },
   { path: 'category', component: CategoryComponent },
+  { path: 'department', component: DepartmentComponent },
+  { path: 'roles', component: RolesComponent },
 ];
 
 @NgModule({
