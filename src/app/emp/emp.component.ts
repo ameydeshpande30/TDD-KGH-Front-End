@@ -10,20 +10,29 @@ import { Subject } from 'rxjs';
   styleUrls: ['./emp.component.css']
 })
 export class EmpComponent implements OnInit {
-  public list: Rooms[];
+  public list: any[];
   update = 0
-  name = "Name"
-  id = 0;
-  size = 23;
-  price = 20;
+  id = 0
+  name = 0
+  contactNumber = ""
+  username = ""
+  password = "" 
+  sal = "2000"
+  doj = "20/01/1998"
+  rid = 1
+  did = 1
   normal(){
-    this.name = "Name"
-    this.update = 0;
-    this.id = this.list.length + 1;
-    this.size = 23;
-    this.price = 20;
+   this.id = 0
+   this.name = 0
+   this.contactNumber = ""
+   this.username = ""
+   this.password = "" 
+   this.sal = "2000"
+   this.doj = "20/01/1998"
+   this.rid = 1
+   this.did = 1
   }
-  users$: any[] = [];
+ 
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
   http 
@@ -34,48 +43,41 @@ export class EmpComponent implements OnInit {
   @ViewChild("asd") ne;
   ngOnInit() {
     this.http.get(GlobalVariable.BASE_API_URL + "employee").subscribe(result => {
-     
-      this.dtOptions = {
-        pagingType: 'numbers',
-        pageLength: 10,
-        processing: true
-      };
-      
-      this.dtTrigger.next();  
-      this.list = result as Rooms[];
+      $('#datatable-basic').DataTable().destroy()
+      this.list = result
       this.id = this.list.length + 1;
-      this.dtTrigger.unsubscribe();
+      setTimeout(function() {
+        $(function() {
+          $("#datatable-basic").DataTable({
+            pagingType: "numbers",
+            pageLength: 10,
+            processing: true,
+            responsive: true
+          });
+        });
+      }, 100);
+  
   }, error => console.error(error));
   
 
-   
-  this.openModel();
-  this.tp();
+
   }
   
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
-  tp() {
-     
-     
-    //  this.name_h.value = "text";
-    //  this.name = "Amey2"
-    this.ne.value = "asd";
-    }
 
-  
-
-  openModel() {
-  this.name = "Amey";
-
-  }
-  getData(id,name,price,size): void {
+  getData(id, name, contactNumber, username, password , sal, doj, rid, did): void {
     let data = {
-      "id" : id,
-      "name" : name,
-      "price" : price,
-      "size" : size,
+      "id":id, 
+      "name":name, 
+      "contactNumber":contactNumber,
+      "username":username ,
+      "password":password,
+      "sal": sal,
+      "doj": doj,
+      "rid": rid,
+      "did": did,
       "update" : this.update
     };
     this.http.post(GlobalVariable.BASE_API_URL + "employee/add", data, ).toPromise()
@@ -87,13 +89,16 @@ export class EmpComponent implements OnInit {
     
   }
 
-  setData(name, id , price, size){
-    console.log("call");
-    this.update = 1;
-    this.name = name;
-    this.id = id ;
-    this.price = price;
-    this.size = size;
+  setData(id, name, contactNumber, username, password , sal, doj, rid, did){
+    this.id = id,
+    this.name = name, 
+    this.contactNumber = contactNumber,
+    this.username = username, 
+    this.password = password,
+    this.sal = sal, 
+    this.doj = doj, 
+    this.rid = rid, 
+    this.did = did
   }
   del(id){
     this.http.get(GlobalVariable.BASE_API_URL + "employee/del/" + id).subscribe(result => {
@@ -105,10 +110,3 @@ export class EmpComponent implements OnInit {
   }
   , error => console.error(error));}
 }
-
-interface Rooms {
-  id: number;
-  price: number;
-  size: number;
-  name: string;
- }

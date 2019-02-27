@@ -2,7 +2,7 @@
   <!-- Card header -->
   <div class="card-header text-center py-2">
   <div class="d-flex justify-content-between align-items-center">
-  <h1> Room Management</h1>
+  <h1> Inventory Management</h1>
     <button  class="btn btn-primary" (click) ="normal()" data-toggle="modal" data-target="#exampleModal" type="button">ADD</button>
      
       </div>
@@ -97,18 +97,21 @@
             </div>
             <div class="d-flex justify-content-between">
               <div class="form-group">
-                <label for="example-text-input" class="form-control-label">CID</label>
-                <input #mCid  class="form-control" type="text" value="{{cid}}" id="example-number-input">
+                <select #mDrop class="custom-select" id="inputGroupSelect01">
+                  <option selected>Choose...</option>
+                  <option *ngFor="let x of clist" value="{{x.id}}">{{x.name}}</option>
+                </select>
               </div>
               <div class="form-group">
                 <label for="example-text-input" class="form-control-label">Availability</label>
                 <input #mAvailability  class="form-control" type="text" value="{{availability}}" id="example-number-input">
               </div>
             </div>
+          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" (click)="getData(mID.value, mName.value, mQty.value, mCp.value, mSp.value, mCid.value, mAvailability.value)">Save</button>
+          <button type="submit" class="btn btn-primary" (click)="getData(mID.value, mName.value, mQty.value, mCp.value, mSp.value, mDrop.value, mAvailability.value)">Save</button>
         </div>
       
       </div>

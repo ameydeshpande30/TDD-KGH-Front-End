@@ -1,0 +1,87 @@
+<div class="card">
+    <!-- Card header -->
+    <div class="card-header text-center py-2">
+    <div class="d-flex justify-content-between align-items-center">
+    <h1> Category Management</h1>
+      <button  class="btn btn-primary" (click) ="normal()" data-toggle="modal" data-target="#exampleModal" type="button">ADD</button>
+       
+        </div>
+    </div>
+    <div class="table-responsive py-2 card-body">
+    <table class="table table-striped  table-bordered table-sm row-border hover" id="datatable-basic" datatable [dtOptions]="dtOptions"
+        >
+        <thead class="thead-light">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Count</th>
+            <th>Add/Update</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Count</th>
+            <th>Add/Update</th>
+          </tr>
+        </tfoot>
+        <tbody>
+            <tr *ngFor="let x of list">
+                <td>{{x.id}}</td>
+                <td>{{x.name}}</td>
+                <td>{{x.count}}</td>
+                <td >
+                    <button class="btn btn-icon btn-outline-primary py-1 px-2"  (click)="setData(x.id, x.name, x.count)"  data-toggle="modal" data-target="#exampleModal" type="button">
+                      <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                    </button>
+                    <button class="btn btn-icon btn-outline-danger py-1 px-2" type="button">
+                        <i class="far fa-times-circle" aria-hidden="true" (click)="del(x.id)"></i>
+                      </button>
+                  </td>
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div  class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+         
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add/Update Inventory</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <div class="d-flex justify-content-center">
+              <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">ID</label>
+                  <input #mID disabled  class="form-control" type="text" value="{{id}}" id="example-number-input">
+              </div>
+              </div>
+              <div class="d-flex justify-content-between">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Name</label>
+                  <input #mName class="form-control" type="text" value="{{name}}" id="example-number-input">
+                </div>
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Count</label>
+                  <input #mCount class="form-control" type="text" value="{{count}}" id="example-number-input">
+                </div>
+              </div>
+              
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" (click)="getData(mID.value, mName.value, mCount.value)">Save</button>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+   

@@ -16,6 +16,7 @@ import { InventoryComponent } from './inventory/inventory.component';
 import { RouterModule } from '@angular/router';
 import { BilComponent } from './bil/bil.component';
 import { StatementComponent } from './statement/statement.component';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { StatementComponent } from './statement/statement.component';
     EmpComponent,
     InventoryComponent,
     BilComponent,
-    StatementComponent
+    StatementComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

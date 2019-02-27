@@ -8,6 +8,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RoomComponent } from './room/room.component';
 import { bindCallback } from 'rxjs';
+import { CategoryComponent } from './category/category.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'emp', component: EmpComponent },
   { path: 'bill', component: BilComponent },
   { path: 'statement', component: StatementComponent },
+  { path: 'category', component: CategoryComponent },
 ];
 
 @NgModule({

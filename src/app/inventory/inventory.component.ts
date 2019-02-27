@@ -29,61 +29,41 @@ export class InventoryComponent implements OnInit {
     this.cid = 10;
     this.availability = true;
   }
+  clist : any[] = [];
   users$: any[] = [];
-  dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<any> = new Subject();
+ 
   http 
   constructor(public http2:HttpClient) {
-    // this.list.push(this.rasd);
-    console.log("hello");
     
    this.http = http2;
   }
-  @ViewChild("asd") ne;
+
   ngOnInit() {
+ 
+    this.http.get(GlobalVariable.BASE_API_URL + "category").subscribe(result => {
+      this.clist = result;
+    });
     this.http.get(GlobalVariable.BASE_API_URL + "inventory").subscribe(result => {
-     
-     
-      this.dtOptions = {
-        pagingType: 'numbers',
-        pageLength: 10,
-        processing: true
-      };
-      
-    
-      // this.dtTrigger.next();
+      $('#datatable-basic').DataTable().destroy()
       this.list = result as inventory[];
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-      
       this.id = this.list.length + 1;
-     
-      // this.dtTrigger.unsubscribe();
-      console.log("done1");
+      setTimeout(function() {
+        $(function() {
+          $("#datatable-basic").DataTable({
+            pagingType: "numbers",
+            pageLength: 10,
+            processing: true,
+            responsive: true
+          });
+        });
+      }, 100);
       
   }, error => console.error(error));
   
-  console.log("done2");
-   
-  this.openModel();
-  this.tp();
   }
 
-
-  ngOnDestroy(): void {
-    this.dtTrigger.unsubscribe();
-  }
-  tp() {
-
-    this.ne.value = "asd";
-    }
-
-  
-
-  openModel() {
-  this.name = "Amey";
-
-  }
   getData(id, name, qty, cp, sp, cid, availability): void {
+    
     let data = {
       "id": id,
        "name":name, 
@@ -98,7 +78,6 @@ export class InventoryComponent implements OnInit {
     
     this.http.post(GlobalVariable.BASE_API_URL + "inventory/add", data, ).toPromise()
            .then(
-            //  this.setList()
             window.location.reload()
            )
            .catch(

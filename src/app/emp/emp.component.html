@@ -8,7 +8,7 @@
       </div>
   </div>
   <div class="table-responsive py-2 card-body">
-  <table class="table table-striped  table-bordered table-sm row-border hover" id="datatable-buttons" datatable [dtOptions]="dtOptions"
+  <table class="table table-striped  table-bordered table-sm row-border hover" id="datatable-basic" datatable [dtOptions]="dtOptions"
       >
       <thead class="thead-light">
         <tr>
@@ -50,7 +50,7 @@
               <td>{{x.rid}}</td>
               <td>{{x.did}}</td>
               <td >
-                  <button class="btn btn-icon btn-outline-primary py-1 px-2"  (click)="setData(x.name, x.id, x.price, x.size)"  data-toggle="modal" data-target="#exampleModal" type="button">
+                  <button class="btn btn-icon btn-outline-primary py-1 px-2"  (click)="setData(x.id, x.name, x.contactNumber, x.username, x.password , x.sal, x.doj, x.rid, x.did)"  data-toggle="modal" data-target="#exampleModal" type="button">
                     <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                   </button>
                   <button class="btn btn-icon btn-outline-danger py-1 px-2" type="button">
@@ -77,56 +77,56 @@
             <div class="d-flex justify-content-center">
               <div class="form-group">
                   <label for="example-text-input" class="form-control-label">ID</label>
-                  <input disabled  class="form-control" type="text" value="{{id}}" id="example-number-input">
+                  <input disabled #mID  class="form-control" type="text" value="{{id}}" id="example-number-input">
               </div>
             </div>
             <div class="d-flex justify-content-between">
               <div class="form-group">
                   <label for="example-text-input" class="form-control-label">Name</label>
-                  <input  class="form-control" type="text" value="{{name}}" id="example-number-input">
+                  <input #mName class="form-control" type="text" value="{{name}}" id="example-number-input">
               </div>
               <div class="form-group">
                   <label for="example-number-input" class="form-control-label">Contact Number</label>
-                  <input  class="form-control" type="text" value="{{contactNumber}}" id="example-number-input">
+                  <input #mContactNumber class="form-control" type="text" value="{{contactNumber}}" id="example-number-input">
               </div>
             </div>
             <div class="d-flex justify-content-between">
                 <div class="form-group">
                     <label for="example-text-input" class="form-control-label">USERNAME</label>
-                    <input  class="form-control" type="text" value="{{username}}" id="example-number-input">
+                    <input #mUsername class="form-control" type="text" value="{{username}}" id="example-number-input">
                 </div>
                 <div class="form-group">
                     <label for="example-number-input" class="form-control-label">PASSWORD</label>
-                    <input  class="form-control" type="text" value="{{password}}" id="example-number-input">
+                    <input #mPassword class="form-control" type="text" value="{{password}}" id="example-number-input">
                 </div>
             </div>
             <div class="d-flex justify-content-between">
                 <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Sal</label>
-                    <input  class="form-control" type="number" value="{{sal}}" id="example-number-input">
+                    <input #mSal class="form-control" type="number" value="{{sal}}" id="example-number-input">
                 </div>
                 <div class="form-group">
                     <label for="example-number-input" class="form-control-label">DOJ</label>
-                    <input  class="form-control" type="Date" value="{{size}}" id="example-number-input">
+                    <input #mSize class="form-control" type="Date" value="{{size}}" id="example-number-input">
                 </div>
             </div>
             <div class="d-flex justify-content-between">
                 <div class="form-group">
                     <label for="example-text-input" class="form-control-label">DID</label>
-                    <input  class="form-control" type="number" value="{{did}}" id="example-number-input">
+                    <input #mDid class="form-control" type="number" value="{{did}}" id="example-number-input">
                 </div>
                 <div class="form-group">
                     <label for="example-number-input" class="form-control-label">RID</label>
-                    <input  class="form-control" type="number" value="{{RID}}" id="example-number-input">
+                    <input #mRid class="form-control" type="number" value="{{RID}}" id="example-number-input">
                 </div>
             </div>
           
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" >Save</button>
+          <button type="submit" class="btn btn-primary" (click)="getData(mId.value, mName.value, mContactNumber.value, mUsername.value, mPassword.value, mSal.value, mDoj.value, mRid.value, mDid)" >Save</button>
         </div>
       </div>
     </div>
   </div>
- 
+  
