@@ -19,6 +19,9 @@ import { StatementComponent } from './statement/statement.component';
 import { CategoryComponent } from './category/category.component';
 import { DepartmentComponent } from './department/department.component';
 import { RolesComponent } from './roles/roles.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,10 +37,13 @@ import { RolesComponent } from './roles/roles.component';
     StatementComponent,
     CategoryComponent,
     DepartmentComponent,
-    RolesComponent
+    RolesComponent,
+    HomepageComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     ChartsModule,
     AppRoutingModule,
     DataTablesModule,

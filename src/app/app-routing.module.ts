@@ -1,3 +1,4 @@
+import { HomepageComponent } from './homepage/homepage.component';
 import { StatementComponent } from './statement/statement.component';
 import { BilComponent } from './bil/bil.component';
 import { EmpComponent } from './emp/emp.component';
@@ -10,9 +11,11 @@ import { RoomComponent } from './room/room.component';
 import { CategoryComponent } from './category/category.component';
 import { DepartmentComponent } from './department/department.component';
 import { RolesComponent } from './roles/roles.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
+  { path: '', component: HomepageComponent, children : [
+    { path: '', component: DashboardComponent },
   { path: 'room', component: RoomComponent },
   { path: 'customer', component: CustomerComponent },
   { path: 'inventory', component: InventoryComponent },
@@ -22,6 +25,9 @@ const routes: Routes = [
   { path: 'category', component: CategoryComponent },
   { path: 'department', component: DepartmentComponent },
   { path: 'roles', component: RolesComponent },
+  ] },
+  { path: 'login', component: LoginComponent },
+  
 ];
 
 @NgModule({
