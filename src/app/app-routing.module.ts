@@ -12,9 +12,11 @@ import { CategoryComponent } from './category/category.component';
 import { DepartmentComponent } from './department/department.component';
 import { RolesComponent } from './roles/roles.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './Auth/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: HomepageComponent, children : [
+  { path: '', component: HomepageComponent, canActivate: 
+  [AuthGuard] , children : [
     { path: '', component: DashboardComponent },
   { path: 'room', component: RoomComponent },
   { path: 'customer', component: CustomerComponent },
