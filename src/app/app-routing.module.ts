@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'customer', component: CustomerComponent },
   { path: 'inventory', component: InventoryComponent },
   { path: 'emp', component: EmpComponent },
-  { path: 'bill', component: BilComponent },
+  { path: 'bill/:id', component: BilComponent },
   { path: 'statement', component: StatementComponent },
   { path: 'category', component: CategoryComponent },
   { path: 'department', component: DepartmentComponent },

@@ -2,6 +2,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Subject } from 'rxjs';
+import { GlobalVariable } from '../global';
 
 @Component({
   selector: 'app-statement',
@@ -27,39 +28,12 @@ export class StatementComponent implements OnInit {
   @ViewChild("asd") ne;
   getData(cin, cout){
     console.log(cin, cout);
-    this.http.get("http://localhost:3000/data").subscribe((result) =>{
+    this.http.get(GlobalVariable.BASE_API_URL + "bill/" + cin +  "/" + cout).subscribe((result) =>{
       $('#datatable-basic').DataTable().destroy()
       
-      // this.id = this.list.length + 1;
-      // this.dtOptions = {
-      //   pagingType: 'numbers',
-      //   pageLength: 10,
-      //   processing: true,
-      //   responsive: true
-      // };
-      // this.dtTrigger.next();
-      this.list = result as Statemnt[];
-      
-      // this.dtTrigger.unsubscribe();
-      // this.tp();
-      // this.openModel();
-      // this.listn = result as Statemnt[];
-      // console.log(this.listn[0]);
-      
-      // $('#datatable-basic').DataTable().clear()
-      // console.log(result);
-      // setTimeout(function () {
-        
-      //   $('#datatable-basic').DataTable()
-          
-      // }, 100);
      
-      // $('#datatable-basic').DataTable({
-      //   pagingType: 'numbers',
-      //   pageLength: 10,
-      //   processing: true,
-      //   responsive : true,
-      // });
+      this.list = result as Statemnt[];
+   
       setTimeout(function() {
         $(function() {
           $("#datatable-basic").DataTable({
@@ -73,20 +47,11 @@ export class StatementComponent implements OnInit {
      
     })
   }
-  openModel() {
-    this.value = "Amey";
   
-    }
-    tp() {
-     
-     
-      //  this.name_h.value = "text";
-      //  this.name = "Amey2"
-      this.ne.value = "asd";
-      }
   ngOnInit() {
     this.dtOptions = {
       pagingType: 'numbers',
+      
       pageLength: 10,
       processing: true,
       responsive: true
@@ -96,8 +61,8 @@ export class StatementComponent implements OnInit {
 }
 interface Statemnt {
   id:number;
-  cid:number;
-  amount:number;
-  cin:string;
-  cout:string;
+  CId:number;
+  RId:number;
+  check_in_date:string;
+  check_out_date:string;
  }

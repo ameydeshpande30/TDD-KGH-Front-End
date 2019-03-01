@@ -26,9 +26,8 @@
       <thead class="thead-light">
         <tr>
           <th>ID</th>
-          <th>BID</th>
           <th>CID</th>
-          <th>Amount</th>
+          <th>RID</th>
           <th>Check IN</th>
           <th>Check OUT</th>
         </tr>
@@ -36,9 +35,8 @@
       <tfoot>
         <tr>
           <th>ID</th>
-          <th>BID</th>
           <th>CID</th>
-          <th>Amount</th>
+          <th>RID</th>
           <th>Check IN</th>
           <th>Check OUT</th>
         </tr>
@@ -46,11 +44,11 @@
       <tbody>
           <tr *ngFor="let x of list">
               <td>{{x.id}}</td>
-              <td>{{x.bid}}</td>
-              <td>{{x.cid}}</td>
-              <td>{{x.amount}}</td>
-              <td>{{x.cin}}</td>
-              <td>{{x.cout}}</td>
+              <td>{{x.CId}}</td>
+              <td>{{x.RId}}</td>
+              <td>{{x.check_in_date}}</td>
+              <td>{{x.check_out_date}}</td>
+   
              
           </tr>
         

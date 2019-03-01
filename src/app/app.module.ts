@@ -25,6 +25,7 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { AuthGuard } from './Auth/auth.guard';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,7 @@ import { AuthGuard } from './Auth/auth.guard';
     DepartmentComponent,
     RolesComponent,
     HomepageComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
