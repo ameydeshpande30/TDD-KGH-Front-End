@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
+  name = "Amey Deshpande"
   constructor(public auth:AuthService) { }
 
   ngOnInit() {

@@ -42,7 +42,7 @@
               <td>{{x.contactNumber}}</td>
               <td>{{x.email}}</td>
               <td>{{x.aadhar}}</td>
-              <td>{{x.idproof}}</td>
+              <td><a href="{{x.idproof}}">IDProof</a></td>
               <td >
                   <button  class="btn btn-icon btn-outline-primary py-1 px-2"  (click)="setData( x.id, x.name, x.address, x.contactNumber, x.email, x.aadhar, x.idproof)"  data-toggle="modal" data-target="#exampleModal" type="button">
                     <i class="fas fa-pencil-alt" aria-hidden="true"></i>
@@ -103,13 +103,13 @@
             </div>
             <div class="form-group">
               <label for="example-number-input" class="form-control-label">IDProof</label>
-              <input #mIdproof class="form-control" type="text" value="{{idproof}}" id="example-number-input">
+              <input  class="form-control" type="file" (change) = "sel($event)" id="example-number-input">
             </div>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary " (click)="getData(mID.value, mName.value, mAddress.value, mContactNumber.value, mEmail.value, mAadhar.value, mIdproof.value)">Save</button>
+          <button type="submit" class="btn btn-primary " (click)="getData(mID.value, mName.value, mAddress.value, mContactNumber.value, mEmail.value, mAadhar.value)">Save</button>
         </div>
      
       </div>

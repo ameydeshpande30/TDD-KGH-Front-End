@@ -47,8 +47,8 @@
               <td>{{x.password}}</td>
               <td>{{x.sal}}</td>
               <td>{{x.doj}}</td>
-              <td>{{x.rid}}</td>
-              <td>{{x.did}}</td>
+              <td>{{getRID(x.rid)}}</td>
+              <td>{{getDID(x.rid)}}</td>
               <td >
                   <button class="btn btn-icon btn-outline-primary py-1 px-2"  (click)="setData(x.id, x.name, x.contactNumber, x.username, x.password , x.sal, x.doj, x.rid, x.did)"  data-toggle="modal" data-target="#exampleModal" type="button">
                     <i class="fas fa-pencil-alt" aria-hidden="true"></i>
@@ -107,24 +107,30 @@
                 </div>
                 <div class="form-group">
                     <label for="example-number-input" class="form-control-label">DOJ</label>
-                    <input #mSize class="form-control" type="Date" value="{{size}}" id="example-number-input">
+                    <input #mDoj class="form-control" type="Date" value="{{doj}}" id="example-number-input">
                 </div>
             </div>
             <div class="d-flex justify-content-between">
                 <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">DID</label>
-                    <input #mDid class="form-control" type="number" value="{{did}}" id="example-number-input">
+                  <label for="example-number-input" class="form-control-label">DID</label>
+                    <select #mDID class="custom-select" id="inputGroupSelect01">
+                      <option selected>Choose...</option>
+                      <option *ngFor="let x of clist" value="{{x.id}}">{{x.name}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="example-number-input" class="form-control-label">RID</label>
-                    <input #mRid class="form-control" type="number" value="{{RID}}" id="example-number-input">
+                    <select #mRID class="custom-select" id="inputGroupSelect02">
+                      <option selected>Choose...</option>
+                      <option *ngFor="let x of rlist" value="{{x.id}}">{{x.name}}</option>
+                    </select>
                 </div>
             </div>
           
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" (click)="getData(mId.value, mName.value, mContactNumber.value, mUsername.value, mPassword.value, mSal.value, mDoj.value, mRid.value, mDid)" >Save</button>
+          <button type="submit" class="btn btn-primary" (click)="getData(mID.value, mName.value, mContactNumber.value, mUsername.value, mPassword.value, mSal.value, mDoj.value, mRID.value, mDID.value)" >Save</button>
         </div>
       </div>
     </div>

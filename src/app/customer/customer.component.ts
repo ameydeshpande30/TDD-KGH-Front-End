@@ -14,20 +14,25 @@ export class CustomerComponent implements OnInit {
   update = 0
   name = "Name"
   id = 0;
-  address: "Address";
-  contactNumber: "7588758032";
-  email: "ameyd30@gmail.com";
-  aadhar: "831-931-253";
-  idproof: "MH301998";
+  address: string;
+  contactNumber: string;
+  email: string;
+  aadhar: string;
+  idproof: string;
+  file : File;
+  sel(event){
+    this.file = event.target.files[0];
+
+  }
   normal(){
     this.name = "Name"
     this.update = 0;
-    this.id = this.list.length + 1;
+    this.id = this.list[this.list.length - 1].id;
     this.address = "Address";
     this.contactNumber = "7588758032";
     this.email =  "ameyd30@gmail.com";
     this.aadhar =  "831-931-253";
-    this.idproof = "MH301998";
+    this.idproof = "file.pdf";
   }
   users$: any[] = [];
   dtOptions: DataTables.Settings = {};
@@ -76,7 +81,7 @@ export class CustomerComponent implements OnInit {
   this.name = "Amey";
 
   }
-  getData(id, name, address, contactNumber, email, aadhar, idproof): void {
+  getData(id, name, address, contactNumber, email, aadhar): void {
     let data = {
       "id" : id,
       "name" : name,
@@ -84,10 +89,21 @@ export class CustomerComponent implements OnInit {
       "contactNumber" : contactNumber,
       "email" : email,
       "aadhar" : aadhar,
-      "idproof" : idproof,
       "update" : this.update
     };
-    this.http.post(GlobalVariable.BASE_API_URL + "customer/addUpdate", data, ).toPromise()
+    var ext = this.file.name.split(".")[1];
+    var seconds = new Date().getTime();
+    let formData:FormData = new FormData();
+    formData.append("id", id);
+    formData.append("name", name);
+    formData.append("address", address);
+    formData.append("contactNumber", contactNumber);
+    formData.append("email", email);
+    formData.append("aadhar", aadhar);
+    formData.append("file", this.file, seconds + "." + ext);
+
+   
+    this.http.post(GlobalVariable.BASE_API_URL + "customer/addUpdate/" + this.update, formData).toPromise()
            .then(
             //  this.setList()
             window.location.reload()

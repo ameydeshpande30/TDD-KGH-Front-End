@@ -11,13 +11,15 @@ import { Subject } from 'rxjs';
 })
 export class EmpComponent implements OnInit {
   public list: any[];
+  public clist: any[];
+  public rlist: any[];
   update = 0
   id = 0
   name = 0
   contactNumber = ""
   username = ""
   password = "" 
-  sal = "2000"
+  sal = 2000
   doj = "20/01/1998"
   rid = 1
   did = 1
@@ -27,7 +29,7 @@ export class EmpComponent implements OnInit {
    this.contactNumber = ""
    this.username = ""
    this.password = "" 
-   this.sal = "2000"
+   this.sal = 2000
    this.doj = "20/01/1998"
    this.rid = 1
    this.did = 1
@@ -42,6 +44,12 @@ export class EmpComponent implements OnInit {
   }
   @ViewChild("asd") ne;
   ngOnInit() {
+    this.http.get(GlobalVariable.BASE_API_URL + "department").subscribe(result => {
+      this.clist = result;
+    });
+    this.http.get(GlobalVariable.BASE_API_URL + "roles").subscribe(result => {
+      this.rlist = result;
+    });
     this.http.get(GlobalVariable.BASE_API_URL + "employee").subscribe(result => {
       $('#datatable-basic').DataTable().destroy()
       this.list = result
@@ -59,9 +67,15 @@ export class EmpComponent implements OnInit {
   
   }, error => console.error(error));
   
-
+ 
 
   }
+  getRID(id:number): string {
+    return this.rlist[id-1].name;
+  } 
+  getDID(id:number): string {
+    return this.clist[id-1].name;
+  } 
   
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
@@ -76,14 +90,15 @@ export class EmpComponent implements OnInit {
       "password":password,
       "sal": sal,
       "doj": doj,
-      "rid": rid,
-      "did": did,
+      "rId": rid,
+      "dId": did,
       "update" : this.update
     };
-    this.http.post(GlobalVariable.BASE_API_URL + "employee/add", data, ).toPromise()
+    console.log(sal)
+    this.http.post(GlobalVariable.BASE_API_URL + "employee/add", JSON.parse(JSON.stringify(data)), ).toPromise()
            .then(
             //  this.setList()
-            window.location.reload()
+            // window.location.reload()
            )
            .catch();
     
