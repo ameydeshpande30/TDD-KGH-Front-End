@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GlobalVariable } from '../global';
 import { JsonPipe } from '@angular/common';
-
+import { Subject } from 'rxjs';
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
@@ -14,6 +14,8 @@ export class CategoryComponent implements OnInit {
   name = "Name"
   id = 0;
   count = 0;
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
   normal(){
     this.name = "Name"
     this.update = 0;

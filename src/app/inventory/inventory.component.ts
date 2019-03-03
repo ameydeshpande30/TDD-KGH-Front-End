@@ -31,7 +31,8 @@ export class InventoryComponent implements OnInit {
   }
   clist : any[] = [];
   users$: any[] = [];
- 
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
   http 
   constructor(public http2:HttpClient) {
     

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalVariable } from '../global';
 import { HttpClient } from '@angular/common/http';
-
+import { Subject } from 'rxjs';
 @Component({
   selector: 'app-roles',
   templateUrl: './roles.component.html',
@@ -13,7 +13,8 @@ export class RolesComponent implements OnInit {
   name = "Name"
   id = 0;
   desc = "desc";
-
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
   normal(){
     this.update = 0
     this.name = "Name"
