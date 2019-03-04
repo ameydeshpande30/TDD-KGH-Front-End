@@ -12,7 +12,7 @@ export class BilComponent implements OnInit {
   public cname : string;
   public cid : number;
   public cphone : string;
-  private cemail : string;
+  public cemail : string;
   public caddr : string;
   public iid : string;
   public idate : string;
