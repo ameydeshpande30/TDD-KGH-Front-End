@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BillDataService } from '../bill-data.service';
 
 @Component({
   selector: 'app-bil',
@@ -8,11 +9,31 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BilComponent implements OnInit {
   public id: string;
-  constructor(private route: ActivatedRoute) {}
+  public cname : string;
+  public cid : number;
+  public cphone : string;
+  private cemail : string;
+  public caddr : string;
+  public iid : string;
+  public idate : string;
+  public item : any [];
+  public ta : number;
+
+  constructor(private bd:BillDataService) {
+    this.cname = bd.cname;
+    this.cid = bd.cid;
+    this.cemail = bd.cemail;
+    this.caddr = bd.caddr;
+    this.cphone = bd.cphone;
+    this.iid = bd.iid;
+    this.idate = bd.idate;
+    this.item = bd.item;
+    this.ta = bd.ta;
+
+  }
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    console.log(this.id);
+   
     
   }
 
